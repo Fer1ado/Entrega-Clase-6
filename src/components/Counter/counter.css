@@ -1,0 +1,19 @@
+.cantidad {
+    max-width: 600px;
+    
+}
+
+.icono {
+    font-size: 2rem;
+    color: #800080;
+    padding: 8px;
+}
+
+.numero{
+    font-size: 3rem;
+}
+
+.chevron{
+    font-size: 3rem;
+    color:purple;
+}

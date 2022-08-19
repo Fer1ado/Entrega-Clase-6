@@ -1,0 +1,26 @@
+.card {
+    position:relative;
+    margin: 13px;
+    max-width: 350px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.cantidad {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+h3{
+    margin-top: 0px;
+}
+
+p{
+    padding-top: 11px;
+}
+
+h5{
+    margin-top: 0px;
+}

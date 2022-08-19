@@ -1,0 +1,39 @@
+.zoomup {
+    display:flex;
+    max-height: 350px;
+    width: 900px;
+
+}
+
+.zoomup img{
+   object-fit: cover;
+   border:0px;
+   width: 100vw;
+   padding: 10px;
+}
+
+.content{
+    display:grid;
+    grid-template-rows: 80px repeat(auto-fill, 70px) 70px;
+    
+    justify-content: center;
+    
+}
+
+
+
+.zoomup h1{
+    position: absolute;
+    overflow: visible;
+    display:flex;
+    color: white;
+    text-shadow: 2px 2px #1c1b1b91;
+    z-index: 1;
+    top: 50px;
+    right: 10%;
+    
+}
+
+.contador {
+    
+}
