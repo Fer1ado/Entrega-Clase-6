@@ -1,0 +1,18 @@
+
+.formulario{
+    padding: 25px;
+}
+
+.compra{
+    padding-top:8px;
+    text-align:start ;
+    width: 290px;
+    height: 55px;
+}
+
+.tilde{
+    position: absolute;
+    margin-left: 20px;
+    font-weight: bold;
+    align-items: center;
+}

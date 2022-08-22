@@ -7,7 +7,7 @@ import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailCont
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 import { ContextoCarrito } from './ContextoCarrito/ContextoCarrito';
 import Carrito from './components/Carrito/Carrito';
-import GenerarOrden from './components/Checkout/Checkout';
+import GenerarOrden from './components/Checkout/GenerarOrden';
 
 function App() {
 
