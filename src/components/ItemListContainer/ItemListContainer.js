@@ -9,7 +9,7 @@ const ItemListContainer = ({greeting}) => {
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
 
-   const { IdCategoria } = useParams()
+    const { IdCategoria } = useParams()
     
     useEffect(()=>{
         setLoading(true)

@@ -33,6 +33,8 @@ const Carrito = () => {
 
                 <h3 className="totalCarrito">Total carrito: $ {totalCarrito()} </h3>
                 <div className="btn vaciarCarro purple" title="Vaciar Carrito" onClick={() => vaciarCarro()}> Vaciar Carrito <i className="medium material-icons" > remove_shopping_cart</i></div>
+                <Link to="/carrito/generarOrden"><div className="btn terminarcompra green" title="Terminar Compra"> Terminar Compra <i className="medium material-icons" > check</i></div></Link> 
+
             </div>
         }
         </>

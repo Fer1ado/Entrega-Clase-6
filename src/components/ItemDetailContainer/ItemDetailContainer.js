@@ -16,7 +16,6 @@ const ItemDetailContainer = () => {
     getDoc(doc(BaDat, "Zima-Catalogo", IdProducto)).then(response => {
       
         const data = response.data()
-        console.log(data)
         const ajusteProductos = { id: response.id, ...data}
         setProducto(ajusteProductos)
         })

@@ -10,7 +10,7 @@ const Navbar = () => {
   
     <nav className="purple darken-2 z-depth-5 ">
         <div className="nav-wrapper alineacion">
-         <Link to='/' className=""><img src="../../images/logo2.svg"/></Link>
+         <Link to='/' className=""><img src="https://firebasestorage.googleapis.com/v0/b/zima-ceramica-a2caa.appspot.com/o/logo2.svg?alt=media&token=30bfd68f-ba9e-4d07-8a39-2c71af479af5"/></Link>
           <ul className="right hide-on-small-and-down alinearlinks">
             <Link to='/category/platos' >Platos </Link>
             <Link to='/category/cuencos'>Cuencos </Link>
