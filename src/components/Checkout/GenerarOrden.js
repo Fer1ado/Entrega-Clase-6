@@ -100,7 +100,14 @@ const GenerarOrden = () => {
         <h1>Checkout</h1>
         {ordenconfirm !== "" ? 
         
-        <div> <h2>Tu compra se proceso Exitosamente </h2><br></br><h4>El id de tu operación es: <b>{ordenconfirm}</b></h4><br></br><Link to="/"><h4>Seguir Comprando</h4></Link></div> 
+        <div> 
+            <h2>Tu compra se proceso Exitosamente! </h2><br></br>
+            <div>
+                <h4> Enviaremos tu pedido a: <b>{direccion}</b>. </h4>
+            </div>
+            <h4>El id de tu operación es: <b>{ordenconfirm}</b></h4> 
+            <h4>se envió un correo a <b>{email}</b> <br></br> con el detalle de seguimiento del envío.</h4><br></br>
+            <Link to="/"><h4>Seguir Comprando</h4></Link></div> 
         
         :     
         
