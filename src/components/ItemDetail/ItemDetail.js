@@ -24,7 +24,7 @@ const ItemDetail = ({name, imagen, descripcion, stock, id, precio}) => {
 
     const montoParcial = precio * definirCantidad
    
-console.log(definirCantidad)
+
 
     return(
         <>
