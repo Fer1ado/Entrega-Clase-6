@@ -1,43 +1,29 @@
 import './ItemListContainer.css'
-import { useState, useEffect } from 'react'
 import ItemList from "../ItemList/ItemList"
 import { useParams} from "react-router-dom"
-import { getDocs, collection, query,  where} from "firebase/firestore"
-import { BaDat } from "../../Services/firebase/firebaseindex"
 import Loading from "../Loading/Loading"
+import {popProductos} from "../../Services/firebase/firestore"
+import {useAsync} from "../../hooks/useAsync"
 
-const ItemListContainer = ({greeting}) => {
-    const [products, setProducts] = useState([])
-    const [loading, setLoading] = useState(true)
-
+const ItemListContainer = ({saludo}) => {
     const { IdCategoria } = useParams()
-    
-    useEffect(()=>{
-        setLoading(true)
-        const coleccionCompleta = !IdCategoria 
-        ? collection(BaDat, "Zima-Catalogo")
-        : query(collection(BaDat, "Zima-Catalogo"), where("categoria", "==", IdCategoria))
 
-        getDocs(coleccionCompleta)
-        .then(response => {
-            const ajusteProductos = response.docs.map(doc => {
-            const data = doc.data()
-            return {id: doc.id, ...data}
-        })
-        setProducts(ajusteProductos)
-    }).catch(error => console.log(error)).finally(() => {setLoading(false)})
-    
-    },[IdCategoria])
+        const buscarProductosFirestore = () => popProductos(IdCategoria)
+
+        const { datos, error, cargando} = useAsync(buscarProductosFirestore, [IdCategoria])
 
 
+    if(error){
+        return (<h1>Algo salió mal</h1>)
+    }
 
     return (
         <>
     
-        <h1>{greeting}</h1>
-        {loading === true ? 
-                        <Loading/>
-        :   <ItemList products={products}/>
+        <h1>{saludo}</h1>
+        {cargando === true ? 
+                        <Loading texto="Cargando Productos..."/>
+        :   <ItemList products={datos}/>
         } 
         </>
     )

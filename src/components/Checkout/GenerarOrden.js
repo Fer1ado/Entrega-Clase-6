@@ -41,6 +41,7 @@ const GenerarOrden = () => {
         }
         
         const ids = carro.map(prod=>prod.id)
+       
         const catalogoRef = collection(BaDat,"Zima-Catalogo")
 
         const primerResponse = await getDocs(query(catalogoRef, where(documentId(), "in", ids)))
@@ -88,7 +89,12 @@ const GenerarOrden = () => {
     setLoading(false)
 
     }
-
+    
+    if(loading){
+        return (
+            <Loading texto="Generando Orden..."/>
+        )
+    } else{
 
   
     return (
@@ -96,6 +102,7 @@ const GenerarOrden = () => {
         <>
         
         <h1>Checkout</h1>
+
         {ordenconfirm !== "" ? 
         
             <Confirm direccion={direccion} ordenconfirm={ordenconfirm} email={email} telefono={telefono}/>
@@ -141,6 +148,7 @@ const GenerarOrden = () => {
             </div>
         </form>
         }
+        
           
         </>
     
@@ -148,5 +156,5 @@ const GenerarOrden = () => {
 
 
 }
-
+}
 export default GenerarOrden

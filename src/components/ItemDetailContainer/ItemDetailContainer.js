@@ -1,45 +1,35 @@
-import { useEffect, useState } from "react"
 import ItemDetail from "../ItemDetail/ItemDetail"
 import { useParams} from "react-router-dom"
-import { getDoc, doc } from "firebase/firestore"
-import { BaDat } from "../../Services/firebase/firebaseindex"
+import {popProducto} from "../../Services/firebase/firestore"
+import { useAsync } from "../../hooks/useAsync"
+import Loading from "../Loading/Loading"
 
 const ItemDetailContainer = () => {
-    const [producto, setProducto] = useState()
-    const [loading, setLoading] = useState(true)
     const {IdProducto} = useParams()
+    
+    const buscarProductoFirestore = () => popProducto(IdProducto)
 
+    const { datos, error, cargando} = useAsync(buscarProductoFirestore, [IdProducto])
 
-    useEffect(() => {
-        setLoading(true)
-
-    getDoc(doc(BaDat, "Zima-Catalogo", IdProducto)).then(response => {
-      
-        const data = response.data()
-        const ajusteProductos = { id: response.id, ...data}
-        setProducto(ajusteProductos)
-        })
-    .catch(error=>{
-        console.log(error)
-    })
-    .finally(()=>setLoading(false))
-
-
-},[IdProducto])
-
-
+    if(error){
+        return (<h1>Algo salió mal</h1>)
+    }
 
 
 return (
-    
+    <>
+    {cargando === true ? 
+        <Loading texto="Cargando Detalle ..."/> :
     <div>
-        <ItemDetail name={producto?.nombre} 
-        imagen={producto?.imagen} 
-        descripcion={producto?.descripcion} 
-        stock={producto?.stock}
-        id={producto?.id} precio={producto?.importe}/>
+        <ItemDetail name={datos.nombre} 
+        imagen={datos.imagen} 
+        descripcion={datos.descripcion} 
+        stock={datos.stock}
+        id={datos.id} precio={datos.importe}/>
         
     </div>
+    }
+    </>
     )
 }
 

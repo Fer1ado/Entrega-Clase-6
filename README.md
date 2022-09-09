@@ -20,6 +20,7 @@ $ npm start
 - Route/category/cuencos filters the items containing category cuencos to display them in the ItemListContainer component
 
 - Route/category/tazas
+
 - /category/varios ---> Same as Above
 
 - Route/category/:IdProducto ----> Opens the detailed view of the item selected, using the ItemDetail Module to display the info.

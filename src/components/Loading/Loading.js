@@ -1,5 +1,5 @@
 
-const Loading = () => {
+const Loading = ({texto}) => {
 
     return(
         <>
@@ -15,7 +15,7 @@ const Loading = () => {
                                 </div>
                                 </div>
                             </div> 
-                            <h2>Cargando...</h2>
+                            <h2>{texto}</h2>
                         </div>
         </>
     )
