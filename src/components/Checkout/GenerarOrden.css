@@ -4,7 +4,7 @@
 }
 
 .compra{
-    padding-top:8px;
+    padding:8px;
     text-align:start ;
     width: 290px;
     height: 55px;
@@ -16,3 +16,19 @@
     font-weight: bold;
     align-items: center;
 }
+
+.alineado{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.aviso{
+    box-shadow: 5px 3px 27px black;
+}
+
+.seguir{
+    margin-top: 20px;
+}
+

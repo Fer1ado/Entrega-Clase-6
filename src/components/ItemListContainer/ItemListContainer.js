@@ -4,6 +4,7 @@ import ItemList from "../ItemList/ItemList"
 import { useParams} from "react-router-dom"
 import { getDocs, collection, query,  where} from "firebase/firestore"
 import { BaDat } from "../../Services/firebase/firebaseindex"
+import Loading from "../Loading/Loading"
 
 const ItemListContainer = ({greeting}) => {
     const [products, setProducts] = useState([])
@@ -35,20 +36,7 @@ const ItemListContainer = ({greeting}) => {
     
         <h1>{greeting}</h1>
         {loading === true ? 
-                        <div>
-                            <div className="preloader-wrapper big active">
-                                <div className="spinner-layer spinner-purple">
-                                <div className="circle-clipper left">
-                                    <div className="circle"></div>
-                                </div><div className="gap-patch">
-                                    <div className="circle"></div>
-                                </div><div className="circle-clipper right">
-                                    <div className="circle"></div>
-                                </div>
-                                </div>
-                            </div> 
-                            <h2>Cargando...</h2>
-                        </div>
+                        <Loading/>
         :   <ItemList products={products}/>
         } 
         </>

@@ -1,0 +1,26 @@
+
+.footer {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 3rem;
+}
+
+.container{
+    margin-top:0;
+    padding-bottom:15px;
+}
+
+.redes{
+    padding-right: 9px;
+}
+
+a :hover {
+    color: #0b090c;
+   
+}
+
+@media (max-width: 500px){
+    .uno{
+        display:none;
+    }
+}

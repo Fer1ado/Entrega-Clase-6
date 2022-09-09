@@ -4,7 +4,8 @@ import Contexto from "../../ContextoCarrito/ContextoCarrito"
 import "./GenerarOrden.css"
 import { BaDat } from "../../Services/firebase/firebaseindex"
 import {addDoc, collection, updateDoc, doc, getDocs, query, where, documentId, writeBatch} from "firebase/firestore"
-
+import Loading from "../Loading/Loading"
+import Confirm from "../OrderConfirm/OrderConfirm"
 
 
 const GenerarOrden = () => {
@@ -14,7 +15,7 @@ const GenerarOrden = () => {
     const [direccion, setDireccion] = useState("")
     const [telefono, setTelefono] = useState("")
     const [email, setEmail] = useState("")
-
+    const [loading, setLoading] = useState(false)
 
     const { carro, calcularCantidad, totalCarrito, vaciarCarro} = useContext(Contexto)
 
@@ -23,7 +24,7 @@ const GenerarOrden = () => {
 
     
     const crearOrden = async () =>{
-       
+       setLoading(true)
                 
         const infOrden = {
             cliente : {
@@ -64,7 +65,7 @@ const GenerarOrden = () => {
             }
         })
 
-        const chequeostock =prodSinStock.length
+        const chequeostock = prodSinStock.length
 
 
 
@@ -84,73 +85,65 @@ const GenerarOrden = () => {
         
         }
 
-    
+    setLoading(false)
+
     }
 
-    const ordenProceso = () => {
 
-    return <h1>Procesando...</h1>
-
-        
-    }
   
     return (
+        
         <>
         
         <h1>Checkout</h1>
         {ordenconfirm !== "" ? 
         
-        <div> 
-            <h2>Tu compra se proceso Exitosamente! </h2><br></br>
-            <div>
-                <h4> Enviaremos tu pedido a: <b>{direccion}</b>. </h4>
-            </div>
-            <h4>El id de tu operación es: <b>{ordenconfirm}</b></h4> 
-            <h4>se envió un correo a <b>{email}</b> <br></br> con el detalle de seguimiento del envío.</h4><br></br>
-            <Link to="/"><h4>Seguir Comprando</h4></Link></div> 
+            <Confirm direccion={direccion} ordenconfirm={ordenconfirm} email={email} telefono={telefono}/>
         
         :     
         
         <form className="col s12">
             <div className="row formulario">
                 <div className="input-field col s6">
-                <i className="material-icons prefix">account_circle</i>
-                <input id="icon_name" type="text" className="validate" value={nombre} onChange={(e)=>setNombre(e.target.value)} ></input>
-                <label htmlFor="icon_name">Nombre</label>
-                <span className="helper-text" data-error="ingrese su Nombre" data-success="Ok">ingresar Nombre</span>
+                    <i className="material-icons prefix">account_circle</i>
+                    <input id="icon_name" type="text" className="validate" value={nombre} onChange={(e)=>setNombre(e.target.value)} ></input>
+                    <label htmlFor="icon_name">Nombre</label>
+                    <span className="helper-text" data-error="ingrese su Nombre" data-success="Ok">ingresar Nombre</span>
                 </div>
                 <div className="input-field col s6">
-                <input id="icon_surname" type="text" className="validate" value={apellido} onChange={(e)=>setApellido(e.target.value)} ></input>
-                <label htmlFor="icon_surname">Apellido</label>
-                <span className="helper-text" data-error="ingrese su Apellido" data-success="Ok">ingresar Apellido</span>
+                    <input id="icon_surname" type="text" className="validate" value={apellido} onChange={(e)=>setApellido(e.target.value)} ></input>
+                    <label htmlFor="icon_surname">Apellido</label>
+                    <span className="helper-text" data-error="ingrese su Apellido" data-success="Ok">ingresar Apellido</span>
                 </div>
                 <div className="input-field col s12">
-                <i className="material-icons prefix">directions</i>
-                <input id="icon_adress" type="text" className="validate" value={direccion} onChange={(e)=>setDireccion(e.target.value)} ></input>
-                <label htmlFor="icon_adress">Dirección</label>
-                <span className="helper-text" data-error="No es una direccion válida" data-success="Ok">ingresar direccion</span>
+                    <i className="material-icons prefix">directions</i>
+                    <input id="icon_adress" type="text" className="validate" value={direccion} onChange={(e)=>setDireccion(e.target.value)} ></input>
+                    <label htmlFor="icon_adress">Dirección</label>
+                    <span className="helper-text" data-error="No es una direccion válida" data-success="Ok">ingresar direccion</span>
                 </div>
                 <div className="input-field col s6">
-                <i className="material-icons prefix">mail_outline</i>
-                <input id="icon_mail" type="Email" className="validate"value={email} onChange={(e)=>setEmail(e.target.value)} ></input>
-                <label htmlFor="icon_mail">E-mail</label>
-                <span className="helper-text" data-error="No es una direccion válida" data-success="Ok">ingresar E-mail</span>
+                    <i className="material-icons prefix">mail_outline</i>
+                    <input id="icon_mail" type="Email" className="validate"value={email} onChange={(e)=>setEmail(e.target.value)} ></input>
+                    <label htmlFor="icon_mail">E-mail</label>
+                    <span className="helper-text" data-error="No es una direccion válida" data-success="Ok">ingresar E-mail</span>
                 </div>
                 <div className="input-field col s6">
-                <i className="material-icons prefix">phone</i>
-                <input id="icon_telephone" type="number" className="validate" value={telefono} onChange={(e)=>setTelefono(e.target.value)} required></input>
-                <label htmlFor="icon_telephone">Telefono</label>
-                <span className="helper-text" data-error="ingresar telefono válido" data-success="Ok">ingresar telefono</span>
+                    <i className="material-icons prefix">phone</i>
+                    <input id="icon_telephone" type="number" className="validate" value={telefono} onChange={(e)=>setTelefono(e.target.value)} required></input>
+                    <label htmlFor="icon_telephone">Telefono</label>
+                    <span className="helper-text" data-error="ingresar telefono válido" data-success="Ok">ingresar telefono</span>
                 </div>
                 {telefono === "" ?  
                 <div className="btn purple compra" type="submit" title="Generar Orden" disabled> Generar Orden de Compra <i className="Large material-icons tilde" > local_shipping </i></div> 
                 :                
-                <div className="btn purple compra" type="submit" title="Generar Orden" onClick={() => crearOrden()} onSubmit={() => ordenProceso()} > Generar Orden de Compra <i className="Large material-icons tilde"> local_shipping </i></div>
+                <div className="btn purple compra" type="submit" title="Generar Orden" onClick={() => crearOrden()} > Generar Orden de Compra <i className="Large material-icons tilde"> local_shipping </i></div>
                 }
             </div>
         </form>
         }
+          
         </>
+    
     )
 
 

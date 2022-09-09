@@ -37,7 +37,7 @@ const ItemDetail = ({name, imagen, descripcion, stock, id, precio}) => {
         <h5>Agreegadas al Carrito: <b>{!definirCantidad ? 0 : definirCantidad}</b> Monto: ${!montoParcial ? 0 : montoParcial}</h5>
         {count === 0 ? 
             <Counter stock={stock} key={id} agregar={sumaCarro} initial={definirCantidad} />
-            :  <h4>  <span className="btn-floating btn-large purple pulse"><Link to="/Carrito"><i className="large material-icons">shopping_basket</i></Link></span><br></br> Terminar Compra </h4>
+            : <>  <Counter stock={stock} key={id} agregar={sumaCarro} initial={definirCantidad} /> <h4>  <span className="btn-floating btn-large purple pulse"><Link to="/Carrito"><i className="large material-icons">shopping_basket</i></Link></span><br></br> Terminar Compra </h4> </>
         }
         </div>
         </>

@@ -2,7 +2,7 @@ import "./counter.css"
 import { useState, useEffect} from 'react'
 
 
-const Counter = ({stock, agregar, initial = 1}) => { //stock y onadd son props que llegan desde el componente padre
+const Counter = ({stock, agregar, initial = 1}) => { 
     const [count, setCount] = useState(initial)
 
     
