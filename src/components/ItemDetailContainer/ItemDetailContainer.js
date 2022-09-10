@@ -12,7 +12,7 @@ const ItemDetailContainer = () => {
     const { datos, error, cargando} = useAsync(buscarProductoFirestore, [IdProducto])
 
     if(error){
-        return (<h1>Algo salió mal</h1>)
+        return (<h1>Algo salió mal...</h1>)
     }
 
 

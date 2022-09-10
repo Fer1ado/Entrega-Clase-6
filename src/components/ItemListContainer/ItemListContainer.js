@@ -14,7 +14,7 @@ const ItemListContainer = ({saludo}) => {
 
 
     if(error){
-        return (<h1>Algo salió mal</h1>)
+        return (<h1>Algo salió mal...</h1>)
     }
 
     return (

@@ -17,7 +17,7 @@ const ItemDetail = ({name, imagen, descripcion, stock, id, precio}) => {
         const productoAgregar =  {
             id, name, precio, cantidad, imagen
         }
-        agregarItem(productoAgregar) //--> este es el punto de conexión con el js de contexto que lleva el contexto del carrito
+        agregarItem(productoAgregar) 
     }
 
     const definirCantidad = buscarCantidadProd(id)

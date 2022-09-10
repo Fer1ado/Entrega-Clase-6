@@ -1,7 +1,5 @@
 import './App.css';
-
 import Navbar from './components/Navbar/Navbar';
-
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer"
 import {BrowserRouter, Routes, Route} from "react-router-dom"
@@ -9,6 +7,8 @@ import { ContextoCarrito } from './ContextoCarrito/ContextoCarrito';
 import Carrito from './components/Carrito/Carrito';
 import GenerarOrden from './components/Checkout/GenerarOrden';
 import Footer from './components/Footer/Footer'
+
+
 
 function App() {
 
@@ -26,6 +26,7 @@ function App() {
             <Route path="/carrito/generarOrden" element={<GenerarOrden/>} />
           </Routes>
         <Footer/>
+       
       </BrowserRouter>
       </ContextoCarrito>
       

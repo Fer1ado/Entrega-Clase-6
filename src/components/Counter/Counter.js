@@ -1,5 +1,5 @@
 import "./counter.css"
-import { useState, useEffect} from 'react'
+import { useState} from 'react'
 
 
 const Counter = ({stock, agregar, initial = 1}) => { 
